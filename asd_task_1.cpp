@@ -1,7 +1,7 @@
 /**
-    NAMA  :
-    NIM   :
-    KELAS :
+    NAMA  : Atika Oktavia Kusumawardhani
+    NIM   : 1301154449
+    KELAS : IF 39-01
 **/
 
 
@@ -12,12 +12,8 @@ using namespace std;
 /**
     - daftarkan seluruh variable global yang dibutuhkan di sini
 **/
-//=================================================
-// YOUR CODE STARTS HERE
-
-
-// YOUR CODE ENDS HERE
-//=================================================
+    int A=0,B=0,C=0,D=0,puts,puas,ptubes,prosentase;
+	char in;
 
 
 void main_menu();
@@ -45,12 +41,24 @@ void main_menu(){
     **/
 
     int pilihan;
-    //=================================================
-    // YOUR CODE STARTS HERE
+        cout<<"DAFTAR MENU"<<endl;
+	    cout<<"1.Set standar indeks nilai"<<endl;
+	    cout<<"2.Set proporsi nilai"<<endl;
+	    cout<<"3.Input nilai"<<endl;
+	    cout<<"4.Keluar"<<endl;
+	    cout<<"Masukkan Pilihan"<<endl;
+	    cin>>pilihan;
 
+	    switch(pilihan)
+		{
+		case 1 : set_standar();break;
+		case 2 : set_proporsi_nilai();
+		case 3 : input_nilai();break;
+		case 4 : thank_you();break;
+		}
 
-    // YOUR CODE ENDS HERE
-    //=================================================
+}
+
     thank_you();
 }
 
@@ -61,12 +69,18 @@ void set_proporsi_nilai(){
     - fungsi akan menerima 3 input prosentase dari user untuk UTS, UAS, dan TUBES
     - fungsi akan mengulang menerima input dari user jika total prosentase != 100
     **/
-    //=================================================
-    // YOUR CODE STARTS HERE
+    cout<<"input Prosentase Nilai dalam persen :"<<endl;
+	 cout<<"Masukkan prosentase UTS : ";
+	 cin>>puts;
+	 cout<<"Masukkan prosentase UAS : ";
+	 cin>>puas;
+	 cout<<"Masukkan prosentase TUBES : ";
+	 cin>>ptubes;
 
-
-    // YOUR CODE ENDS HERE
-    //=================================================
+	prosentase = puts+puas+ptubes;
+	if(prosentase !=100) {
+		cout<<"total input prosentase !=100, silahkan ulangi lagi"<<endl;
+		set_proporsi_nilai();
 }
 
 void set_standar(){
@@ -75,12 +89,25 @@ void set_standar(){
     - fungsi akan menerima input rentang nilai untuk masing-masing index nilai
     - fungsi akan mengulang menerima input dari user jika terdapat nilai yang overlap
     **/
-    //=================================================
-    // YOUR CODE STARTS HERE
+    cout<<"masukkan standar nilai minimum A : ";
+	cin>>A;
+	cout<<"masukkan standar nilai minimum B : ";
+	cin>>B;
+	cout<<"masukkan standar nilai minimum C : ";
+	cin>>C;
+	cout<<"masukkan standar nilai minimum D : ";
+	cin>>D;
 
-
-    // YOUR CODE ENDS HERE
-    //=================================================
+	if(B>A) {
+		cout<<"input standar salah, silahkan ulangi lagi"<<endl;
+		set_standar();
+	}else if (C>B){
+		cout<<"input standar salah, silahkan ulangi lagi"<<endl;
+		set_standar();
+	}else if(D>C){
+		cout<<"input standar salah, silahkan ulangi lagi"<<endl;
+		set_standar();
+	}
 }
 
 
@@ -92,12 +119,20 @@ char hitung_index(double uts, double uas, double tubes){
     **/
 
     char index;
-    //=================================================
-    // YOUR CODE STARTS HERE
+     char index;
+	double sum;
 
-
-    // YOUR CODE ENDS HERE
-    //=================================================
+	sum=(((uts*puts)/100)+((uas*puas)/100)+((tubes*ptubes)/100));
+	if(sum>=A)
+		index ='A';
+	else if (sum>=B && sum<=A)
+		index='B';
+	else if (sum>=C && sum<=B)
+		index='C';
+	else if (sum>=D && sum<=C)
+		index='D';
+	else
+		index='E';
     return index;
 }
 
@@ -108,12 +143,14 @@ void input_nilai(){
     - fungsi menampilkan index yang didapat berdasarkan input nilai UTS, UAS, dan TUBES
     **/
     double uas, uts, tubes;
-    //=================================================
-    // YOUR CODE STARTS HERE
-
-
-    // YOUR CODE ENDS HERE
-    //=================================================
+	cout<<"masukkan nilai uts : ";
+	cin>>uts;
+	cout<<"masukkan nilai uas : ";
+	cin>>uas;
+	cout<<"masukkan nilai tubes : ";
+	cin>>tubes;
+	cout<<"indeks nilai anda adalah "<<hitung_index(uts,uas,tubes)<<endl;
+	
 }
 
 void thank_you(){
@@ -121,10 +158,8 @@ void thank_you(){
     - fungsi menampilkan pesan singkat untuk mengakhiri program
     - tampilkan nim dan nama kalian
     **/
-    //=================================================
-    // YOUR CODE STARTS HERE
-
-
-    // YOUR CODE ENDS HERE
-    //=================================================
+    cout<<endl;
+	cout<<"Terima Kasih telah meggunakan aplikasi kami"<<endl;
+	cout<<"1301154449 - Atika Oktavia Kusumawardhani";
+	cout<<endl;
 }
